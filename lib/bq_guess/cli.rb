@@ -2,6 +2,7 @@
 
 require "json"
 require "bq_guess/guessers/json_lines"
+require "bq_guess/guessers/ltsv"
 
 module BqGuess
   class Cli
@@ -12,14 +13,30 @@ module BqGuess
     end
 
     def execute
-      result =
-        Guessers::JsonLines.new(
-          File.read(File.expand_path(options[:input_path]))
-        ).guess.as_schema
-      puts JSON.pretty_generate(result)
+      puts JSON.pretty_generate(guesser.guess.as_schema)
     end
 
     private
+
+    def format
+      JSON.parse(input_content.lines.first)
+      :json_lines
+    rescue
+      :ltsv
+    end
+
+    def guesser
+      case format
+      when :json_lines
+        Guessers::JsonLines.new(input_content)
+      when :ltsv
+        Guessers::Ltsv.new(input_content)
+      end
+    end
+
+    def input_content
+      @input_content ||= File.read(File.expand_path(options[:input_path]))
+    end
 
     # TODO: ignore error line
     # TODO: default nullable instead of required
