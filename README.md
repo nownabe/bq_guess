@@ -1,4 +1,9 @@
 # BqGuess
+[![Gem Version](https://badge.fury.io/rb/bq_guess.svg)](https://badge.fury.io/rb/bq_guess)
+[![Code Climate](https://codeclimate.com/repos/58451c2e5a93d470e4000449/badges/ee7d46fb6251050c7493/gpa.svg)](https://codeclimate.com/repos/58451c2e5a93d470e4000449/feed)
+[![Test Coverage](https://codeclimate.com/repos/58451c2e5a93d470e4000449/badges/ee7d46fb6251050c7493/coverage.svg)](https://codeclimate.com/repos/58451c2e5a93d470e4000449/coverage)
+[![Issue Count](https://codeclimate.com/repos/58451c2e5a93d470e4000449/badges/ee7d46fb6251050c7493/issue_count.svg)](https://codeclimate.com/repos/58451c2e5a93d470e4000449/feed)
+
 BqGuess guesses BigQuery schema from existing logs.
 
 ## Installation
